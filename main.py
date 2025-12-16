@@ -1,12 +1,13 @@
 import data_processing
+import json
 
 def main():
     data = data_processing.load_json("finn_dms.json")
-    data_processing.extract_processing_info(data, 2000)
+    processed_data = data_processing.extract_processing_info(data)
     print("Processing complete.")
 
-    word_counts = data_processing.count_words(data)
-    print(word_counts)
+    word_counts = data_processing.count_words(processed_data)
+    json.dump(word_counts, open('dms.json', 'w'), indent=4)
 
     
 if __name__ == "__main__":
