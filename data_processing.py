@@ -32,30 +32,3 @@ def extract_processing_info(data, limit = -1):
     return processed_data
 
 
-def count_words(data):
-    """ Count the total number of times each word is used in the dataset for each user. """
-
-    user_word_counts = {}
-    
-    for entry in data:
-        sender = entry["sender"]
-        message = entry["message"]
-
-        if sender not in user_word_counts:
-            user_word_counts[sender] = {}
-        
-        words = message.lower().split()
-
-        for word in words:
-            user_word_counts[sender][word] = user_word_counts[sender].get(word, 0) + 1
-
-    for sender in user_word_counts:
-        user_word_counts[sender] = dict(
-            sorted(
-                user_word_counts[sender].items(),
-                key = lambda item:item[1],
-                reverse = True
-            )
-        )
-
-    return user_word_counts
