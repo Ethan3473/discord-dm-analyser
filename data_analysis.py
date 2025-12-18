@@ -35,7 +35,7 @@ def messages_over_time(data):
     df = pd.DataFrame(data)
     df["timestamp"] = pd.to_datetime(df["timestamp"], utc = True, format="ISO8601") # Convert weird date formatting to readable times
 
-    counts = df.set_index("timestamp").groupby("sender").resample("M").size() # Makes timestamp the index, splits into a table for each sender, chops time into monthly brackets using new index, count how many rows in each sender month bracket
+    counts = df.set_index("timestamp").groupby("sender").resample("ME").size() # Makes timestamp the index, splits into a table for each sender, chops time into monthly brackets using new index, count how many rows in each sender month bracket
 
     counts = counts.reset_index() # Reset index to boring 0, 1, ...
     counts = counts.rename(columns={0: "count"})
