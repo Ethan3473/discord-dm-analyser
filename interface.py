@@ -42,6 +42,12 @@ class app():
         messages_count_button = tk.Button(self.root, text = "Count", command = self.messages_count_clicked, width = 15)
         messages_count_button.grid(row = 6, column = 0)
 
+        messages_over_time_label = tk.Label(self.root, text = "Map messages over time per user (M):")
+        messages_over_time_label.grid(row = 7, column = 0)
+
+        messages_over_time_button = tk.Button(self.root, text = "Count", command = self.messages_over_time_clicked, width = 15)
+        messages_over_time_button.grid(row = 8, column = 0)
+
         self.root.geometry("800x400")
         self.root.title("DM data processing and visualisation")
 
@@ -83,6 +89,16 @@ class app():
             self.counted_messages = data_analysis.count_words(self.processed_data)
             json.dump(self.counted_messages, open('dm_message_counts.json', 'w'), indent=4)
             messagebox.showinfo("Success", "Message counts successfully output")
+
+        else:        
+            messagebox.showwarning("Error", "No processed data found")
+
+    
+    def messages_over_time_clicked(self):
+        """ Run messages over time graph with current data """
+
+        if self.processed_data != {}:
+            data_analysis.messages_over_time(self.processed_data)
 
         else:        
             messagebox.showwarning("Error", "No processed data found")
