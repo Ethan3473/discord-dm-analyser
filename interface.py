@@ -43,13 +43,14 @@ class app():
         messages_count_button.grid(row = 6, column = 0)
 
         messages_over_time_label = tk.Label(self.root, text = "Map messages over time per user (M):")
-        messages_over_time_label.grid(row = 7, column = 0)
+        messages_over_time_label.grid(row = 5, column = 1)
 
         messages_over_time_button = tk.Button(self.root, text = "Count", command = self.messages_over_time_clicked, width = 15)
-        messages_over_time_button.grid(row = 8, column = 0)
+        messages_over_time_button.grid(row = 6, column = 1)
 
-        self.root.geometry("800x400")
+        self.root.geometry("600x250")
         self.root.title("DM data processing and visualisation")
+        self.root.resizable(width=False, height=False)
 
         self.root.mainloop()
 
