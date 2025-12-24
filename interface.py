@@ -57,6 +57,7 @@ class app():
 
     def load_data_clicked(self):
         """ Runs when JSON submitted """
+        
         file_path = self.load_data_text.get()
 
         if not file_path.endswith(".json"):
@@ -88,7 +89,7 @@ class app():
 
         if self.processed_data != {}:
             self.counted_messages = data_analysis.count_words(self.processed_data)
-            json.dump(self.counted_messages, open('dm_message_counts.json', 'w'), indent=4)
+            json.dump(self.counted_messages, open('output_data/dm_message_counts.json', 'w'), indent=4)
             messagebox.showinfo("Success", "Message counts successfully output")
 
         else:        

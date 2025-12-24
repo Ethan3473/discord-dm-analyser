@@ -3,7 +3,7 @@ import json
 def load_json(file_path):
     """" Loads JSON data from a file. """
 
-    with open(file_path, 'r', encoding = "utf-8") as file:
+    with open(f"input_data/{file_path}", 'r', encoding = "utf-8") as file:
         raw_data = json.load(file)
 
     data = raw_data.get("messages")

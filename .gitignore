@@ -1,5 +1,5 @@
-finn_dms.json
-dms.json
+input_data/*
+!input_data/.gitignore
+output_data/*
+!output_data/.gitignore
 __pycache__/
-processed_dms.json
-dm_message_counts.json
